@@ -42,7 +42,7 @@ const Header = () => {
 
                 {/* Branding (Left) */}
                 <div className="flex items-center gap-4 cursor-pointer z-30 flex-shrink-0" onClick={() => handleScroll('hero')}>
-                    <img src="/logo.png" alt="Srimudra Logo" className="h-12 w-auto md:h-16 shadow-sm rounded-full" />
+                    <img src="/logo.png" alt="Srimudra Logo" className="h-20 w-auto md:h-28 shadow-sm rounded-full" />
                     <div className="flex flex-col">
                         <h1 className={`text-xl md:text-2xl font-serif font-bold tracking-tight uppercase ${scrolled ? 'text-secondary' : 'text-white'} drop-shadow-md`}>
                             Srimudra Events

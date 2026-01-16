@@ -1,59 +1,74 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaAward, FaUsers, FaSmile } from 'react-icons/fa';
 
 const About = () => {
     const stats = [
-        { icon: <FaAward size={40} />, number: '100+', label: 'Events Organized' },
-        { icon: <FaUsers size={40} />, number: '500+', label: 'Happy Clients' },
-        { icon: <FaSmile size={40} />, number: '5-Star', label: 'Customer Rating' },
+        { number: "500+", label: "Events Created" },
+        { number: "50+", label: "Venues Partnered" },
+        { number: "5.0", label: "Star Rating" },
+        { number: "10+", label: "Years Experience" }
     ];
 
     return (
-        <section id="about" className="py-20 bg-background">
+        <section id="about" className="py-20 md:py-32 bg-white overflow-hidden">
             <div className="container mx-auto px-4">
-                <div className="flex flex-col md:flex-row items-center gap-12">
-                    {/* Image Grid */}
-                    <div className="w-full md:w-1/2">
-                        <div className="grid grid-cols-2 gap-4">
-                            <img
-                                src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2669&auto=format&fit=crop"
-                                alt="Wedding decoration"
-                                className="rounded-lg shadow-lg w-full h-64 object-cover transform translate-y-8"
-                            />
-                            <img
-                                src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=2670&auto=format&fit=crop"
-                                alt="Event planning"
-                                className="rounded-lg shadow-lg w-full h-64 object-cover"
-                            />
+                <div className="flex flex-col md:flex-row items-center gap-16">
+
+                    {/* Image Grid with Animation */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, margin: "-100px" }}
+                        transition={{ duration: 0.8 }}
+                        className="w-full md:w-1/2 grid grid-cols-2 gap-4"
+                    >
+                        <div className="space-y-4 mt-8">
+                            <img src="https://images.unsplash.com/photo-1519225469958-305e68780cf9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Wedding Decor" className="rounded-2xl shadow-lg w-full h-64 object-cover transform hover:scale-105 transition-transform duration-500" />
+                            <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Corporate Event" className="rounded-2xl shadow-lg w-full h-48 object-cover transform hover:scale-105 transition-transform duration-500" />
                         </div>
-                    </div>
+                        <div className="space-y-4">
+                            <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Party Vibes" className="rounded-2xl shadow-lg w-full h-48 object-cover transform hover:scale-105 transition-transform duration-500" />
+                            <img src="https://images.unsplash.com/photo-1530103862676-de3c9a59af57?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Elegant Dining" className="rounded-2xl shadow-lg w-full h-64 object-cover transform hover:scale-105 transition-transform duration-500" />
+                        </div>
+                    </motion.div>
 
-                    {/* Content */}
-                    <div className="w-full md:w-1/2">
-                        <h2 className="text-primary font-sans font-bold tracking-wider uppercase mb-2">About Us</h2>
-                        <h3 className="text-4xl md:text-5xl font-serif font-bold text-secondary mb-6">We Create Memories That Last Forever</h3>
-                        <p className="text-gray-600 mb-6 leading-relaxed text-lg">
-                            Srimudra Events is Hyderabad's most trusted event management company, dedicated to turning your dream events into reality. Whether it's a grand wedding, a joyous birthday party, or a professional corporate gathering, we handle everything with precision and passion.
+                    {/* Text Content with Staggered Reveal */}
+                    <motion.div
+                        initial={{ opacity: 0, x: 50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, margin: "-100px" }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className="w-full md:w-1/2"
+                    >
+                        <h3 className="text-secondary uppercase tracking-widest text-sm font-bold mb-4">About Srimudra</h3>
+                        <h2 className="text-4xl md:text-5xl font-serif text-dark font-bold mb-6 leading-tight">
+                            We Don't Just Plan Events, <br /> We Design <span className="italic text-primary">Experiences.</span>
+                        </h2>
+                        <p className="text-gray-600 text-lg mb-6 leading-relaxed">
+                            At Srimudra Events, we believe every celebration tells a story. From intimate gatherings to grand royal weddings in Hyderabad, our team of passionate designers and planners work tirelessly to bring your vision to life with flawless execution.
                         </p>
-                        <p className="text-gray-600 mb-8 leading-relaxed text-lg">
-                            We pride ourselves on delivering <span className="font-bold text-secondary">premium quality</span> services that are <span className="font-bold text-secondary">budget-friendly</span>. Our team of experts pays attention to every detail, ensuring 100% customer satisfaction.
+                        <p className="text-gray-600 text-lg mb-8 leading-relaxed">
+                            Our signature style blends traditional elegance with modern sophistication, ensuring that your special day is not only beautiful but also unforgettable.
                         </p>
 
-                        <div className="grid grid-cols-3 gap-6">
+                        {/* Stats Animation */}
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                             {stats.map((stat, index) => (
                                 <motion.div
                                     key={index}
-                                    whileHover={{ y: -5 }}
-                                    className="bg-white p-4 rounded-lg shadow-md text-center border-b-4 border-primary"
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.4 + (index * 0.1), duration: 0.5 }}
+                                    className="text-center"
                                 >
-                                    <div className="text-primary mb-2 flex justify-center">{stat.icon}</div>
-                                    <h4 className="text-2xl font-bold text-secondary">{stat.number}</h4>
-                                    <p className="text-sm text-gray-500">{stat.label}</p>
+                                    <h4 className="text-3xl font-bold text-dark font-serif">{stat.number}</h4>
+                                    <p className="text-xs uppercase tracking-wider text-gray-500 mt-1">{stat.label}</p>
                                 </motion.div>
                             ))}
                         </div>
-                    </div>
+                    </motion.div>
+
                 </div>
             </div>
         </section>

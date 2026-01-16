@@ -1,50 +1,60 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaTimes, FaCamera } from 'react-icons/fa';
+import { FaTimes } from 'react-icons/fa';
 
 const Gallery = () => {
+    const [filter, setFilter] = useState('all');
     const [selectedImage, setSelectedImage] = useState(null);
-    const [filter, setFilter] = useState('All');
 
     const images = [
-        { id: 1, src: 'https://images.unsplash.com/photo-1519225468063-5078d2284ea1?q=80&w=2574&auto=format&fit=crop', category: 'Weddings', alt: 'Wedding Mandap Decoration Hyderabad' },
-        { id: 2, src: 'https://images.unsplash.com/photo-1530103862676-de3c9a59af57?q=80&w=2670&auto=format&fit=crop', category: 'Birthdays', alt: 'Birthday Party Decoration' },
-        { id: 3, src: 'https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=2669&auto=format&fit=crop', category: 'Corporate', alt: 'Corporate Event Setups' },
-        { id: 4, src: 'https://images.unsplash.com/photo-1527529482837-4698179dc6ce?q=80&w=2670&auto=format&fit=crop', category: 'Weddings', alt: 'Wedding Reception Stage' },
-        { id: 5, src: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc6?q=80&w=2669&auto=format&fit=crop', category: 'Birthdays', alt: 'Kids Birthday Theme' },
-        { id: 6, src: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=2612&auto=format&fit=crop', category: 'Corporate', alt: 'Conference Hall Arrangement' },
-        // Add more placeholders as needed
+        { id: 1, src: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop", category: "weddings" },
+        { id: 2, src: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc6?q=80&w=800&auto=format&fit=crop", category: "corporate" },
+        { id: 3, src: "https://images.unsplash.com/photo-1530103862676-de3c9a59af57?q=80&w=800&auto=format&fit=crop", category: "parties" },
+        { id: 4, src: "https://images.unsplash.com/photo-1520854221256-17451cc330e7?q=80&w=800&auto=format&fit=crop", category: "weddings" },
+        { id: 5, src: "https://images.unsplash.com/photo-1533174072545-e8d9859f6471?q=80&w=800&auto=format&fit=crop", category: "corporate" },
+        { id: 6, src: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=800&auto=format&fit=crop", category: "parties" },
     ];
 
-    const categories = ['All', 'Weddings', 'Birthdays', 'Corporate'];
-
-    const filteredImages = filter === 'All' ? images : images.filter(img => img.category === filter);
+    const filteredImages = filter === 'all' ? images : images.filter(img => img.category === filter);
 
     return (
-        <section id="gallery" className="py-20 bg-white">
+        <section id="gallery" className="py-24 bg-light">
             <div className="container mx-auto px-4">
-                <div className="text-center mb-12">
-                    <h2 className="text-primary font-sans font-bold tracking-wider uppercase mb-2">Our Work</h2>
-                    <h3 className="text-4xl md:text-5xl font-serif font-bold text-secondary mb-8">Memories We've Crafted</h3>
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="text-center mb-12"
+                >
+                    <h3 className="text-secondary uppercase tracking-[0.3em] text-sm font-bold mb-3">Portfolio</h3>
+                    <h2 className="text-4xl md:text-5xl font-serif text-dark font-bold">Our Recent Work</h2>
+                    <div className="w-24 h-1 bg-primary mx-auto mt-6 rounded-full"></div>
+                </motion.div>
 
-                    {/* Filter Buttons */}
-                    <div className="flex flex-wrap justify-center gap-4">
-                        {categories.map((cat) => (
-                            <button
-                                key={cat}
-                                onClick={() => setFilter(cat)}
-                                className={`px-6 py-2 rounded-full border transition-all duration-300 ${filter === cat
-                                        ? 'bg-primary text-white border-primary shadow-lg scale-105'
-                                        : 'bg-transparent text-gray-500 border-gray-300 hover:border-primary hover:text-primary'
-                                    }`}
-                            >
-                                {cat}
-                            </button>
-                        ))}
-                    </div>
-                </div>
+                {/* Filters */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    className="flex justify-center gap-4 md:gap-8 mb-12 flex-wrap"
+                >
+                    {['all', 'weddings', 'corporate', 'parties'].map((cat) => (
+                        <button
+                            key={cat}
+                            onClick={() => setFilter(cat)}
+                            className={`px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wider transition-all ${filter === cat
+                                    ? 'bg-primary text-white shadow-lg transform scale-105'
+                                    : 'bg-white text-gray-500 hover:bg-gray-100 hover:text-dark'
+                                }`}
+                        >
+                            {cat}
+                        </button>
+                    ))}
+                </motion.div>
 
-                {/* Gallery Grid */}
+                {/* Grid */}
                 <motion.div
                     layout
                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
@@ -53,62 +63,49 @@ const Gallery = () => {
                         {filteredImages.map((image) => (
                             <motion.div
                                 layout
+                                key={image.id}
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 exit={{ opacity: 0, scale: 0.8 }}
-                                transition={{ duration: 0.3 }}
-                                key={image.id}
-                                className="relative group overflow-hidden rounded-xl cursor-pointer shadow-md aspect-w-4 aspect-h-3"
+                                transition={{ duration: 0.4 }}
+                                className="relative group cursor-pointer overflow-hidden rounded-xl shadow-lg aspect-square"
                                 onClick={() => setSelectedImage(image)}
                             >
-                                <img
-                                    src={image.src}
-                                    alt={image.alt}
-                                    className="object-cover w-full h-64 lg:h-80 transition-transform duration-500 group-hover:scale-110"
-                                    loading="lazy"
-                                />
+                                <img src={image.src} alt="Event" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                    <div className="text-white text-center p-4">
-                                        <FaCamera size={30} className="mx-auto mb-2" />
-                                        <p className="font-serif font-bold text-lg">{image.category}</p>
-                                    </div>
+                                    <span className="text-white text-lg font-serif tracking-widest uppercase border border-white px-6 py-2">View</span>
                                 </div>
                             </motion.div>
                         ))}
                     </AnimatePresence>
                 </motion.div>
-
-                {/* Lightbox */}
-                <AnimatePresence>
-                    {selectedImage && (
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4"
-                            onClick={() => setSelectedImage(null)}
-                        >
-                            <button
-                                className="absolute top-6 right-6 text-white text-4xl hover:text-primary transition-colors focus:outline-none"
-                                onClick={() => setSelectedImage(null)}
-                            >
-                                <FaTimes />
-                            </button>
-                            <motion.img
-                                initial={{ scale: 0.8, opacity: 0 }}
-                                animate={{ scale: 1, opacity: 1 }}
-                                src={selectedImage.src}
-                                alt={selectedImage.alt}
-                                className="max-w-full max-h-[90vh] rounded shadow-2xl"
-                                onClick={(e) => e.stopPropagation()}
-                            />
-                            <div className="absolute bottom-6 left-0 w-full text-center text-white p-4">
-                                <h3 className="text-xl font-serif">{selectedImage.alt}</h3>
-                            </div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
             </div>
+
+            {/* Lightbox Modal */}
+            <AnimatePresence>
+                {selectedImage && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4"
+                        onClick={() => setSelectedImage(null)}
+                    >
+                        <button className="absolute top-8 right-8 text-white text-4xl hover:text-secondary transition-colors">
+                            <FaTimes />
+                        </button>
+                        <motion.img
+                            initial={{ scale: 0.8 }}
+                            animate={{ scale: 1 }}
+                            exit={{ scale: 0.8 }}
+                            src={selectedImage.src}
+                            alt="Full Screen"
+                            className="max-w-full max-h-[90vh] rounded-lg shadow-2xl"
+                            onClick={(e) => e.stopPropagation()}
+                        />
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </section>
     );
 };

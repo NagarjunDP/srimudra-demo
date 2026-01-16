@@ -1,136 +1,92 @@
 import React from 'react';
 import Slider from 'react-slick';
-import { FaStar, FaQuoteLeft } from 'react-icons/fa';
+import { FaQuoteLeft, FaStar } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const Testimonials = () => {
-    const reviews = [
-        {
-            name: "R Ram",
-            rating: 5,
-            review: "Absolutely Stunning Experience! Flowers 🌹🌹 Events Management turned our special day into an unforgettable memory. From the breathtaking floral arrangements to the flawless event coordination...",
-            date: "6 months ago"
-        },
-        {
-            name: "Surendra babu Bodipudi",
-            rating: 5,
-            review: "I recently hired Sri Mudra Events Management Company to organize a birthday celebration, and I couldn't be more pleased with their service! From the initial planning stage to the final execution, their team was professional, creative, and...",
-            date: "6 months ago"
-        },
-        {
-            name: "Tandra Jyothsna",
-            rating: 5,
-            review: "Amazing work and Nice coordination with customers mainly focusing on customer satisfaction and flower collection and decoration themes are very unique finally budget friendly🥰 love to collaborate for our family events again.",
-            date: "6 months ago"
-        },
-        {
-            name: "eswar muthyam",
-            rating: 5,
-            review: "had an Amazing experience with you. Very much satisfied with your work. It's the best and friendly. Thank you 😊",
-            date: "6 months ago"
-        },
-        {
-            name: "Jay Sri",
-            rating: 5,
-            review: "Fantastic experience with srimudra events. The team made our event truly memorable. Very well organized, timely, and professional.",
-            date: "6 months ago"
-        },
-        {
-            name: "lakshmu sapecc17",
-            rating: 5,
-            review: "Best quality very much Elegant decorations very good staff service.....",
-            date: "5 months ago"
-        },
-        {
-            name: "Shaik reshma",
-            rating: 5,
-            review: "Nice work responding also nice for customer the give a beautiful finishing us oral excellent",
-            date: "6 months ago"
-        },
-        {
-            name: "Muthineni Venkata Koteswara Rao",
-            rating: 5,
-            review: "Budget friendly and excellent work",
-            date: "6 months ago"
-        },
-        {
-            name: "Saisree 1999",
-            rating: 5,
-            review: "Great management Done a great work",
-            date: "6 months ago"
-        },
-        {
-            name: "sekhar v",
-            rating: 5,
-            review: "Excellent organised management",
-            date: "5 months ago"
-        },
-        {
-            name: "Chaitanya Gutta",
-            rating: 5,
-            review: "Nice very awesome",
-            date: "6 months ago"
-        }
-    ];
-
     const settings = {
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 3,
+        slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 4000,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                }
-            },
-            {
-                breakpoint: 640,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-        ]
+        autoplaySpeed: 5000,
+        arrows: false
     };
 
-    return (
-        <section id="testimonials" className="py-20 bg-background text-center">
-            <div className="container mx-auto px-4">
-                <div className="mb-12">
-                    <h2 className="text-primary font-sans font-bold tracking-wider uppercase mb-2">Testimonials</h2>
-                    <h3 className="text-4xl md:text-5xl font-serif font-bold text-secondary">What Our Clients Say</h3>
-                </div>
+    const testimonials = [
+        {
+            name: "Priya & Rajesh",
+            event: "Wedding",
+            text: "Srimudra events made our wedding absolute magic! The decor was better than what we imagined, and the team handled everything so professionally. Highly recommended!",
+            rating: 5
+        },
+        {
+            name: "Rahul Reddy",
+            event: "Corporate Gala",
+            text: "We hired them for our annual corporate meet, and the execution was flawless. From logistics to the stage setup, everything was premium.",
+            rating: 5
+        },
+        {
+            name: "Sneha Kapoor",
+            event: "Birthday Bash",
+            text: "The best birthday party planner in Hyderabad! My daughter loved the theme, and the guests were impressed by the arrangements.",
+            rating: 5
+        }
+    ];
 
-                <div className="px-4 md:px-12">
+    return (
+        <section id="testimonials" className="py-24 bg-dark text-white relative overflow-hidden">
+            {/* Background Elements */}
+            <div className="absolute top-0 left-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+            <div className="absolute bottom-0 right-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
+
+            <div className="container mx-auto px-4 relative z-10">
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="text-center mb-16"
+                >
+                    <h3 className="text-secondary uppercase tracking-[0.3em] text-sm font-bold mb-3">Testimonials</h3>
+                    <h2 className="text-4xl md:text-5xl font-serif text-white font-bold">Client Love</h2>
+                    <div className="w-24 h-1 bg-primary mx-auto mt-6 rounded-full"></div>
+                </motion.div>
+
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="max-w-4xl mx-auto"
+                >
                     <Slider {...settings}>
-                        {reviews.map((review, index) => (
-                            <div key={index} className="px-3">
-                                <div className="bg-white p-8 rounded-xl shadow-lg h-full flex flex-col justify-between min-h-[300px]">
-                                    <div>
-                                        <FaQuoteLeft className="text-primary/20 text-4xl mb-4 mx-auto" />
-                                        <div className="flex justify-center mb-4">
-                                            {[...Array(review.rating)].map((_, i) => (
-                                                <FaStar key={i} className="text-yellow-400" />
-                                            ))}
-                                        </div>
-                                        <p className="text-gray-600 mb-6 italic text-sm md:text-base line-clamp-4">"{review.review}"</p>
+                        {testimonials.map((item, index) => (
+                            <div key={index} className="px-4 py-8 focus:outline-none">
+                                <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 md:p-12 text-center relative">
+                                    <FaQuoteLeft className="text-4xl text-primary/30 absolute top-8 left-8" />
+
+                                    <div className="flex justify-center gap-1 mb-6 text-yellow-400">
+                                        {[...Array(item.rating)].map((_, i) => <FaStar key={i} />)}
                                     </div>
+
+                                    <p className="text-lg md:text-2xl font-light italic text-gray-200 mb-8 leading-relaxed">
+                                        "{item.text}"
+                                    </p>
+
                                     <div>
-                                        <h4 className="font-serif font-bold text-secondary text-lg">{review.name}</h4>
-                                        <p className="text-xs text-gray-400 mt-1">{review.date}</p>
+                                        <h4 className="text-xl font-bold font-serif text-secondary">{item.name}</h4>
+                                        <p className="text-sm uppercase tracking-wider text-gray-400 mt-1">{item.event}</p>
                                     </div>
                                 </div>
                             </div>
                         ))}
                     </Slider>
-                </div>
+                </motion.div>
             </div>
         </section>
     );
