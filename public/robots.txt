@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://srimudraevents.com/sitemap.xml
