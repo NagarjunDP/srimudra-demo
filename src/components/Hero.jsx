@@ -62,14 +62,15 @@ const Hero = () => {
                     className="max-w-5xl mx-auto"
                 >
                     <h2 className="text-secondary tracking-[0.3em] uppercase text-sm md:text-xl font-bold mb-6 drop-shadow-md">
-                        Hyderabad's Premier Event Planners
+                        Your Vision, Our Passion
                     </h2>
-                    <h1 className="text-6xl md:text-7xl lg:text-9xl font-serif font-bold text-white mb-8 drop-shadow-2xl leading-[0.9] tracking-tight">
-                        Creating <br />
-                        <span className="italic font-heading font-normal text-secondary">Timeless</span> Memories
+                    <h1 className="text-4xl md:text-6xl lg:text-8xl font-serif font-bold text-white mb-8 drop-shadow-2xl leading-[1.1] tracking-tight">
+                        Every Event <br className="hidden md:block" />
+                        <span className="italic font-heading font-normal text-secondary">Tells a Story.</span> <br />
+                        Let's Create Yours.
                     </h1>
                     <p className="text-gray-100 text-lg md:text-2xl font-light tracking-wide mb-12 max-w-3xl mx-auto drop-shadow-lg leading-relaxed">
-                        We turn your dream events into reality with precision, elegance, and grandeur.
+                        From intimate gatherings to royal weddings, we craft moments that last a lifetime.
                     </p>
 
                     <motion.button

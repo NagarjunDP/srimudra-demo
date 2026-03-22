@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { FaBars, FaTimes, FaPhoneAlt } from 'react-icons/fa';
+import { FaBars, FaTimes, FaPhoneAlt, FaCalculator } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import { useModal } from '../../context/ModalContext';
 
 const Header = () => {
@@ -66,6 +67,15 @@ const Header = () => {
                         </li>
                     ))}
                     <li>
+                        <Link
+                            to="/budget-estimator"
+                            className={`text-sm font-bold uppercase tracking-widest transition-colors hover:text-secondary flex items-center gap-1.5 ${scrolled ? 'text-dark' : 'text-white'}`}
+                        >
+                            <FaCalculator size={11} />
+                            Budget Estimator
+                        </Link>
+                    </li>
+                    <li>
                         <button
                             onClick={openModal}
                             className="btn-primary flex items-center gap-2 px-6 py-2.5 text-sm shadow-lg hover:shadow-secondary/50"
@@ -96,6 +106,15 @@ const Header = () => {
                                 </button>
                             </li>
                         ))}
+                        <li>
+                            <Link
+                                to="/budget-estimator"
+                                onClick={() => setNav(false)}
+                                className="text-2xl font-serif text-dark hover:text-secondary transition-colors flex items-center gap-2 justify-center"
+                            >
+                                <FaCalculator size={18} /> Budget Estimator
+                            </Link>
+                        </li>
                         <li>
                             <button
                                 onClick={() => { openModal(); setNav(false); }}

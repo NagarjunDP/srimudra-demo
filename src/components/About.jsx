@@ -3,10 +3,10 @@ import { motion } from 'framer-motion';
 
 const About = () => {
     const stats = [
-        { number: "500+", label: "Events Created" },
+        { number: "100+", label: "Events Created" },
         { number: "50+", label: "Venues Partnered" },
         { number: "5.0", label: "Star Rating" },
-        { number: "10+", label: "Years Experience" }
+        { number: "1+", label: "Year Experience" }
     ];
 
     return (
@@ -50,6 +50,11 @@ const About = () => {
                         <p className="text-gray-600 text-lg mb-8 leading-relaxed">
                             Our signature style blends traditional elegance with modern sophistication, ensuring that your special day is not only beautiful but also unforgettable.
                         </p>
+
+                        <div className="mb-10">
+                            <h4 className="text-dark font-serif font-bold text-xl">Vijaya Yelam</h4>
+                            <p className="text-secondary text-sm uppercase tracking-wider">Proprietor</p>
+                        </div>
 
                         {/* Stats Animation */}
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
